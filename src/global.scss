@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,36 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.loader-css-class {
+  --spinner-color: #00897B;
+  .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+
+    .spinner-crescent circle {
+      stroke-width: 8px;
+    }
+  }
+}
+
+.toast-success-css-class {
+  --background:#CDDC39;
+  --border-radius:4px;
+  --height: 60px;
+  --button-color:#ECEFF1;
+  --color:#fff;
+ }
+
+ .toast-fail-css-class {
+  --background:#FF4127;
+  --border-radius:4px;
+  --height: 60px;
+  --button-color:#ECEFF1;
+  --color:#fff;
+ }
+
+ion-spinner {
+  width: 8em;
+  height: 8em;
+}
