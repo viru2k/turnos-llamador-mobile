@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title size="medium">LLAMADOR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!--   BODY  -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle class="ion-text-center"
+              >Proximo número a llamar</ion-card-subtitle
+            >
+            <ion-card-title
+              *ngIf="!!puesto && (((puesto.length === 0) && (tieneNotificacion === 'NO')))"
+              class="ion-text-center"
+              size="large"
+              color="ion-color-dark"
+              >SIN NUMEROS</ion-card-title
+            >
+            <ion-card-title
+              *ngIf="!!puesto && (tieneNotificacion === 'SI')"
+              class="ion-text-center"
+              size="large"
+              color="ion-color-dark"
+              >NUEVOS NUMEROS</ion-card-title
+            >
+            <ion-card-title
+              *ngIf="!!puesto && (puesto.length !== 0)"
+              class="ion-text-center"
+              size="large"
+              color="ion-color-dark"
+              >{{puesto.sector_abreviado}}{{filter.padLeft(puesto.numero,'0',3)}}</ion-card-title
+            >
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-button expand="block" color="tertiary"     (click)="llamar()">
+              <ion-icon
+                name="volume-high"
+                slot="start"
+
+              ></ion-icon>
+              Llamar
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

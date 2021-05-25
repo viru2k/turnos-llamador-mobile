@@ -1,0 +1,66 @@
+
+ <!--    <div *ngIf="esNuevo">
+        <p-fileUpload name="images" url=" {{conexionService.getURL_SERVICIOS()}}multiuploads/multimedia" (onUpload)="onUpload($event)" chooseLabel="Seleccionar archivo"  uploadLabel="Subir"	cancelLabel="Cancelar"
+        multiple="false" >
+        </p-fileUpload>
+    </div>      -->
+
+    <div *ngIf="esNuevo" >    
+        <div class="d-flex align-items-center">
+            <p-fileUpload #fileInput mode="basic" name="images" url=" {{conexionService.getURL_SERVICIOS()}}multiuploads/multimedia" uploadHandler="uploadresponse($event)"   chooseLabel="seleccionar archivo" (onUpload)="onUpload($event)"></p-fileUpload>
+            <button class="btn btn-md btn-danger ml-2" (click)="borrarArchivo()"><i class="fas fa-trash"></i></button>
+        </div> 
+        
+    </div>   
+
+<form class="col-12"  [formGroup]="updateDataForm" >
+    <div class="row">
+        <div class="col-8">
+     
+ 
+            <div class="form-group ">
+                <label  >Descripción</label>
+                <input class="form-control col-md-12 form-control-sm" formControlName="archivo_descripcion"   autofcus />
+                <div *ngIf="updateDataForm.controls['archivo_descripcion'].errors?.required && updateDataForm.controls['archivo_descripcion'].touched" class="alert alert-warning">
+                        * Este campo es requerido
+                </div>
+            </div>  
+            <div class="form-group ">
+                <label  >Creado</label>
+                <p-calendar [inputStyle]="{'height':'29.1px'}"    class=" " formControlName="fecha_carga"     [locale]="es" dateFormat="dd/mm/yy"   [readonlyInput]="true">                       
+                </p-calendar>                 
+                <div *ngIf="updateDataForm.controls['fecha_carga'].errors?.required && updateDataForm.controls['fecha_carga'].touched" class="alert alert-warning">
+                        * Este campo es requerido
+                </div>
+            </div>  
+            <div class=" row form-group">
+                <div class="row">
+                    <label class="mr-2" >Tiene Vencimiento</label>
+                    <p-inputSwitch  class="mr-2" formControlName="tiene_vencimiento" (onChange)="vencimientoStatus($event)"></p-inputSwitch>
+                </div>
+                <div class="ml-2"  *ngIf="tiene_vencimiento">
+                    <label  class="mr-2" >Vencimiento</label>
+                    <p-calendar [inputStyle]="{'height':'29.1px'}"    class=" " formControlName="fecha_vencimiento"     [locale]="es" dateFormat="dd/mm/yy"   [readonlyInput]="false">                       
+                    </p-calendar> 
+                    <div *ngIf="updateDataForm.controls['fecha_vencimiento'].errors?.required && updateDataForm.controls['fecha_vencimiento'].touched" class="alert alert-warning">
+                            * Este campo es requerido
+                    </div>
+                </div>
+             
+            </div>  
+            <div class="form-group ">
+              
+            </div>  
+        </div>
+</div>
+ 
+</form>         
+
+<p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix mt-2 mr-2">
+                <button   class="btn btn-info btn-block texto-roboto" type="submit" (click)="guardar()" >Guardar</button>
+                
+        </div>
+    </p-footer>
+
+

@@ -1,0 +1,38 @@
+<div class=" faq-title text-center pb-3 pt-2 ">
+    <h5>GESTION DE SECTOR</h5>
+  </div>
+    <div class="card-rounded card-header">
+      <div class="ml-2">   <a  (click)="nuevo()" class="icon-hover  icon-color-success"> <i class="fas fa-plus fa-lg mr-2"></i>Sector</a>    </div> 
+    </div>
+      <div class="row m-3">
+        <p-table  #dt class="pt-2"  tableStyleClass="prime-table" selectionMode="single" [columns]="cols" [value]="elementos" [loading]="loading"  [(selection)]="selecteditems"   columnResizeMode="expand" [responsive]="true"
+        scrollHeight="500px" [scrollable]="true"   styleClass="ui-table-customers" >
+       
+   
+  
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                         
+                          <th style="width: 90%" pSortableColumn="sector_nombre">Sector <p-sortIcon field="sector_nombre"></p-sortIcon></th>                        
+                          <th style="width: 10%">Acción</th>
+                      </tr>
+                      <tr>
+                        <th>
+                          <input pInputText type="text"  (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder="" class="ui-column-filter col-12">
+                      </th>                    
+                      <th ></th>
+                      </tr>
+                    </ng-template>
+            <ng-template pTemplate="body" let-elementos  >
+                <tr style="height:20px"  > 
+                                      
+                  <td style="width: 90%">{{elementos.sector_nombre}}</td>
+                 
+                  <td style="width: 10%">
+                    <a  (click)="buscar(elementos)" class="icon-hover"> <i class="fas fa-pen icon-color-info fa-lg"></i></a>     
+                  </td>
+                </tr>
+            </ng-template>
+           
+        </p-table>
+      </div>

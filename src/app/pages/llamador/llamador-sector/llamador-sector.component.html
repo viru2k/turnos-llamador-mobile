@@ -1,0 +1,38 @@
+
+<div class="main">
+  <div class=" faq-title text-center pb-3 pt-2  "></div>
+  <div class=" faq-title text-center pb-3 pt-2  "></div>
+
+<div class=" faq-title  d-flex justify-content-center align-items-center d-flex align-items-center mt-5">
+<div class="row">
+  <h5 class="texto-llamador-sub">PROXIMO</h5>
+ <!-- <a  (click)="accion($event,op)"  class="icon-hover ml-2"> <i class="icon-herramientas-administrativas icon-color-info fa-lg"></i></a>   -->
+</div>
+</div>
+
+<div  class="d-flex justify-content-center  d-flex align-items-center mt-5 " *ngIf="puesto">
+
+      <label    *ngIf="puesto.length !== 0" class="texto-llamador">{{puesto.sector_abreviado}}{{filter.padLeft(puesto.numero,'0',3)}}</label>
+      <label    *ngIf="((puesto.length === 0) && (tieneNotificacion === 'NO'))" class="texto-llamador">SIN NUMEROS</label>
+      <label    *ngIf="tieneNotificacion === 'SI'" class="texto-notificacion">NUEVOS NUMEROS</label>
+</div>
+
+<div class="d-flex justify-content-center  d-flex align-items-end m-4">
+
+    <a  class="fancy-button bg-gradient1 pointer" style="color: rgb(255, 255, 255);"  (click)="llamar()" ><span><i class="fas fa-volume-up mr-2"></i>LLAMAR NUMERO</span></a>
+
+</div>
+
+<p-overlayPanel #op appendTo="body"  [showTransitionOptions]="'400ms'" [hideTransitionOptions]="'300ms'"  [dismissable]="true" [showCloseIcon]="true" >
+    <div class=" faq-title text-center pb-3 pt-2 ">
+      <h5>ACCION</h5>
+    </div>
+
+  <!--  <div class=" m-2">  <button class="texto-roboto  btn btn-info btn-block" (click)="listadoAtendidos()">Números atendidos</button></div>  -->
+    <div class=" m-2"> <button class="texto-roboto  btn btn-warning  btn-block">Volver a llamar</button></div>
+    <div class=" m-2"><button class="texto-roboto  btn btn-success  btn-block">Números pendientes</button></div>
+
+
+
+  </p-overlayPanel>
+</div>

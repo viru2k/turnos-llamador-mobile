@@ -1,0 +1,73 @@
+<div class=" faq-title text-center pb-3 pt-2 ">
+    <h5>GESTION DE REGLAS</h5>
+  </div>
+    <div class="card-rounded card-header">
+      <div class="ml-2">   <a  (click)="nuevo()" class="icon-hover  icon-color-success"> <i class="fas fa-plus fa-lg mr-2"></i>Nueva regla para usuario</a>    </div> 
+    </div>
+      <div class="row m-3">
+        <p-table  #dt class="pt-2"  tableStyleClass="prime-table" selectionMode="single" [columns]="cols" [value]="elementos"  [(selection)]="selecteditems"  [loading]="loading"  columnResizeMode="expand" [responsive]="true"
+        scrollHeight="500px" [scrollable]="true"   styleClass="ui-table-customers" >
+       
+   
+              <!--      <ng-template pTemplate="header" let-columns >
+                  
+                              <tr >
+                                   
+                                <th  *ngFor="let col of columns" [pSortableColumn]="col.field"  [ngStyle]="{'width': col.width}">
+                                    {{col.header}}
+                                    <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                                </th> 
+                              
+                            </tr> 
+                            <tr>
+                            <th *ngFor="let col of columns" [ngSwitch]="col.field"  >
+                                <input style=" font-size: 12px;" class="form-control col-md-12 form-control-sm" *ngSwitchCase="'nombreyapellido'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                                <input style=" font-size: 12px;" class="form-control col-md-12 form-control-sm" *ngSwitchCase="'email'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                              
+                            </th>
+                            <th></th>
+                        </tr>
+                    </ng-template> -->
+                  
+  
+                    <ng-template pTemplate="header" let-columns>
+                      <tr>
+                         
+
+                          <th style="width: 16%">Puesto</th>
+                          <th style="width: 40%">Sector</th>
+                          <th style="width: 26%">Estado</th>
+                          <th style="width: 20%">Llamado previo</th>
+                          <th style="width: 10%">Editar</th>                          
+                      </tr>
+                      <tr>
+                        <th>
+                          <input pInputText type="text"  (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder="" class="ui-column-filter col-12">
+                      </th>
+                      <th>
+                          <input pInputText type="text" (input)="dt.filter($event.target.value, 'country.name', 'contains')" placeholder="" class="ui-column-filter col-12">
+                      </th>
+                      <th ></th>
+                      <th ></th>
+                      <th ></th>
+                      <th ></th>
+                      <th ></th>
+                      <th ></th>
+                      </tr>
+                    </ng-template>
+            <ng-template pTemplate="body" let-elementos  >
+                <tr style="height:20px"  > 
+                                      
+                  <td style="width: 16%">{{elementos.puesto_defecto}}</td>
+                  <td style="width: 40%">{{elementos.sector_nombre}}</td>
+                  <td style="width: 26%">{{elementos.estado}}</td>
+                  <td style="width: 20%">{{elementos.usuario_previo}}</td>
+                  <td style="width: 10%">
+                    <a  (click)="editarReglas(elementos)" class="icon-hover"> <i class="fas fa-pen icon-color-info fa-lg"></i></a>     
+                  </td>
+                </tr>
+            </ng-template>
+           
+        </p-table>
+      </div>
+      

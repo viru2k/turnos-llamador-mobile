@@ -1,0 +1,88 @@
+<div class=" faq-title text-center pb-3 pt-2 ">
+  <h5>GESTION DE USUARIOS</h5>
+</div>
+  <div class="card-rounded card-header">
+    <div class="ml-2">   <a  (click)="nuevo()" class="icon-hover  icon-color-success"> <i class="fas fa-plus fa-lg mr-2"></i>Usuario</a>    </div> 
+  </div>
+    <div class="row m-3">
+      <p-table  #dt class="pt-2"  tableStyleClass="prime-table" selectionMode="single" [columns]="cols" [value]="elementos"  [(selection)]="selecteditems"  [loading]="loading"  columnResizeMode="expand" [responsive]="true"
+      scrollHeight="500px" [scrollable]="true"   styleClass="ui-table-customers" >
+     
+ 
+            <!--      <ng-template pTemplate="header" let-columns >
+                
+                            <tr >
+                                 
+                              <th  *ngFor="let col of columns" [pSortableColumn]="col.field"  [ngStyle]="{'width': col.width}">
+                                  {{col.header}}
+                                  <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                              </th> 
+                            
+                          </tr> 
+                          <tr>
+                          <th *ngFor="let col of columns" [ngSwitch]="col.field"  >
+                              <input style=" font-size: 12px;" class="form-control col-md-12 form-control-sm" *ngSwitchCase="'nombreyapellido'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                              <input style=" font-size: 12px;" class="form-control col-md-12 form-control-sm" *ngSwitchCase="'email'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                            
+                          </th>
+                          <th></th>
+                      </tr>
+                  </ng-template> -->
+                
+
+                  <ng-template pTemplate="header" let-columns>
+                    <tr>
+                       
+                        <th style="width: 30%" pSortableColumn="nombreyapellido">Nombre <p-sortIcon field="nombreyapellido"></p-sortIcon></th>
+                        <th style="width: 30%" pSortableColumn="email">Usuario <p-sortIcon field="email"></p-sortIcon></th>
+                        <th style="width: 10%">Puesto</th>
+                        <th style="width: 10%">Asociar</th>
+                        <th style="width: 10%">Reglas</th>
+                        <th style="width: 10%">Permisos</th>
+                        <th style="width: 10%">Contraseña</th>
+                        <th style="width: 10%">Acción</th>
+                    </tr>
+                    <tr>
+                      <th>
+                        <input pInputText type="text"  (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder="" class="ui-column-filter col-12">
+                    </th>
+                    <th>
+                        <input pInputText type="text" (input)="dt.filter($event.target.value, 'country.name', 'contains')" placeholder="" class="ui-column-filter col-12">
+                    </th>
+                    <th ></th>
+                    <th ></th>
+                    <th ></th>
+                    <th ></th>
+                    <th ></th>
+                    <th ></th>
+                    </tr>
+                  </ng-template>
+          <ng-template pTemplate="body" let-elementos  >
+              <tr style="height:20px"  > 
+                                    
+                <td style="width: 30%">{{elementos.nombreyapellido}}</td>
+                <td style="width: 30%">{{elementos.email}}</td>
+                <td style="width: 10%">
+                  <a  (click)="editarSector(elementos)" class="icon-hover "> <i class="fas fa-concierge-bell icono-info fa-lg"></i></a>     
+                </td>
+                <td style="width: 10%">
+                  <a  (click)="editarSectorAsociacion(elementos)" class="icon-hover "> <i class="fas fa-network-wired icono-secondary fa-lg"></i></a>     
+                </td>
+                <td style="width: 10%">
+                  <a  (click)="editarReglas(elementos)" class="icon-hover "> <i class="fas fa-pencil-ruler icono-danger fa-lg"></i></a>     
+                </td>
+                <td style="width: 10%">
+                  <a  (click)="editarPermiso(elementos)" class="icon-hover "> <i class="fas fa-sliders-h icono-success fa-lg"></i></a>     
+                </td>
+                <td style="width: 10%">
+                  <a  (click)="editarPassword(elementos)" class="icon-hover "> <i class="fas fa-unlock-alt icono-warning fa-lg"></i></a>     
+                </td>
+                <td style="width: 10%">
+                  <a  (click)="buscar(elementos)" class="icon-hover"> <i class="fas fa-pen icon-color-info fa-lg"></i></a>     
+                </td>
+              </tr>
+          </ng-template>
+         
+      </p-table>
+    </div>
+    
